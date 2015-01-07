@@ -5,17 +5,20 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    respond_with(@projects)
+    @project = Project.new
+
+    render 'index'
+    #respond_with(@projects)
   end
 
   def show
-    respond_with(@project)
+    #respond_with(@project)
   end
 
-  def new
-    @project = Project.new
-    respond_with(@project)
-  end
+  #def new
+    #@project = Project.new
+    #respond_with(@project)
+  #end
 
   def edit
   end
@@ -23,17 +26,23 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
-    respond_with(@project)
+
+    if @project.save
+      redirect_to projects_path
+    else
+      render 'index'
+    end
+    #respond_with(@project)
   end
 
   def update
     @project.update(project_params)
-    respond_with(@project)
+    #respond_with(@project)
   end
 
   def destroy
     @project.destroy
-    respond_with(@project)
+    #respond_with(@project)
   end
 
   private
@@ -42,6 +51,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params[:project]
+      params.require(:project).permit(:name)
     end
 end
