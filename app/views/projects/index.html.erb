@@ -1,25 +1,67 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
+<%= render 'pages/nav' %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Projects</h1>
+<div class="projects main">
+  <div class="container">
+    <div class="row text-right">
+      <a class="btn btn-primary" data-toggle="modal" href="#project-content-modal">New Project</a>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table projects-list">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Time</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+            <% @projects.each do |project| %>
+              <tr>
+                <%= project.title %>
+                <%= project.time %>
+                <td><%= link_to 'Show', project %></td>
+                <td><%= link_to 'Edit', edit_project_path(project), class: "glyphicon glyphicon-edit" %></td>
+                <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-remove" %></td>
+              </tr>
+            <% end %>
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
-<br>
+<div id="project-content-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">New Project</h4>
+      </div>
 
-<%= link_to 'New Project', new_project_path %>
+      <form>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="project_name">Name</label>
+            <input class="form-control" id="project_name" name="project[name]" type="text">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input class="btn btn-primary" name="commit" type="submit" value="Create Project">
+        </div>
+      </form>    
+    </div><!-- .modal-content -->
+  </div><!-- .modal-dialog -->
+</div>
+
+
