@@ -2,6 +2,7 @@ class DashboardController < ApplicationController
 
   def index
     @projects = Project.all
+#    @project = 
     @tasks = Task.all
     @task = Task.new
     #@project = Project.find(params[:project_id])
