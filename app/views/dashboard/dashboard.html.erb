@@ -9,9 +9,9 @@
         <form class="row">
           <div class="form-group col-sm-3">
             <select class="form-control">
-              <option>Make it Real</option>
-              <option>Elibom</option>
-              <option>Infinanza</option>
+              <% @projects.each do |project| %>
+                <option><%= project.name %></option>
+              <% end %>
             </select>
           </div>
           <div class="form-group col-sm-8">
@@ -37,7 +37,7 @@
           <% @projects.each do |project| %>
             <tr>
               <td><%= project.name %></td>
-
+              <td><%= project.tasks %></td>
               <td><%= project.time %></td>
               
             </tr>

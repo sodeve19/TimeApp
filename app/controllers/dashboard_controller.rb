@@ -7,4 +7,12 @@ class DashboardController < ApplicationController
     render 'dashboard'
   end
 
+  def new
+
+  end
+
+  def create
+
+  end
+
 end
