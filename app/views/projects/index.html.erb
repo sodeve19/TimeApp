@@ -24,11 +24,14 @@
 
             <% @projects.each do |project| %>
               <tr>
-                <td><%= project.title %></td>
+                <td><%= project.name %></td>
                 <td><%= project.time %></td>
                 <!--td><%= link_to 'Show', project %></td-->
-                <td><%= link_to 'Edit', edit_project_path(project), class: "glyphicon glyphicon-edit" %></td>
-                <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-remove" %></td>
+                <td class="text-right">
+                  <%= link_to 'Editar', edit_project_path(project), class: "glyphicon glyphicon-edit" %>
+                  <%= link_to 'Eliminar', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-remove" %>
+                </td>
+                
               </tr>
             <% end %>
 

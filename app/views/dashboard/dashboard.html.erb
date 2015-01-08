@@ -1,0 +1,56 @@
+<%= render 'pages/nav' %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="dashboard main">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 activity-form">
+        <form class="row">
+          <div class="form-group col-sm-3">
+            <select class="form-control">
+              <option>Make it Real</option>
+              <option>Elibom</option>
+              <option>Infinanza</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-8">
+            <input class="form-control" placeholder="¿En qué estás trabajando?" type="text" />
+          </div>
+          <div class="col-sm-1">
+            <input class="btn btn-success" type="submit" value="Start" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <table class="table activities-list">
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Description</th>
+            <th class="text-center">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @projects.each do |project| %>
+            <tr>
+              <td><%= project.name %></td>
+
+              <td><%= project.time %></td>
+              
+            </tr>
+          <% end %>
+          
+          <tr>
+            <td>Make it Real</td>
+            <td>Reunión</td>
+            <td class="text-center">800 segundos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+  
