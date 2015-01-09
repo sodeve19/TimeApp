@@ -1,6 +1,6 @@
 <%= render 'pages/nav' %>
 
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <div class="dashboard main">
   <div class="container">
@@ -47,7 +47,7 @@
             <tr>
               <td><%= task.project.name if task.project %></td>
               <td><%= task.description %></td>
-              <td><%#= project.time %></td>
+              <td><%= task.time %></td>
               
             </tr>
           <% end %>
