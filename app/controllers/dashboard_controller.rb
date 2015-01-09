@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects.all
 #    @project = 
     @tasks = Task.all
     @task = Task.new

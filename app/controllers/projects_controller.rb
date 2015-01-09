@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   respond_to :html
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects.all
     @project = current_user.projects.new
 
     render 'index'

@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def create
-    @projects = Project.all
+    @projects = current_user.projects.all
     @task = Task.new(task_params)
     @task.save
 
